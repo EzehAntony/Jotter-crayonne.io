@@ -6,7 +6,7 @@
 
 .main {
   background-color: black;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
   padding: 0 10%;
 }
 

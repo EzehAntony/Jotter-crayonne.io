@@ -3,22 +3,19 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "./dashboard.css";
 
-
 function Dashboard() {
-  document.title = "Dashboard"
+  document.title = "Dashboard";
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
 
   const logOut = (e) => {
     localStorage.removeItem("user");
     navigate("/");
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
     <div className="dashboard">
-
-
       <Header />
 
       <div className="dashboardMainContainer">
@@ -28,16 +25,7 @@ function Dashboard() {
             Username: <span>{user.username}</span>
           </h5>
           <h5>
-            Id: <span>{user._id} </span>
-          </h5>
-          <h5>
             Admin: <span>{String(user.isAdmin)}</span>
-          </h5>
-          <h5>
-            created: <span>{user.createdAt}</span>
-          </h5>
-          <h5>
-            updated: <span>{user.updatedAt}</span>
           </h5>
 
           <div onClick={logOut} className="logout">

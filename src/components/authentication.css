@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -45,14 +46,14 @@ body {
 .left p {
   position: absolute;
   left: 5%;
-  top: 20px;
+  bottom: 5%;
   font-weight: 600;
   font-size: 12px;
   color: #6e6e6e;
 }
 
 .form {
-  max-width: 400px;
+  max-width: 300px;
   padding: 10px;
   border: 2px solid deeppink;
   border-radius: 10px;
@@ -81,6 +82,7 @@ body {
   font-size: 40px;
   background-color: white;
   margin-top: -80px;
+  border-radius: 20px;
 }
 
 .left span {
@@ -167,25 +169,6 @@ button:hover {
   margin: 15px 0;
 }
 
-.custom-shape-divider-top-1656840499 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-top-1656840499 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 87px;
-}
-
-.custom-shape-divider-top-1656840499 .shape-fill {
-  fill: #ff1493;
-}
 @media (max-width: 701px) {
   .right {
     display: none;

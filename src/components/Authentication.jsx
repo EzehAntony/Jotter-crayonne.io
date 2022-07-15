@@ -67,9 +67,7 @@ const Authentication = ({ text, action, path, to }) => {
             Welcome to <span>Jotter</span>
           </h1>
           <h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-            facere error iste laborum voluptatum sequi minus expedita fugiat
-            repellendus id.
+            A simple notepad app  for making notes. 
           </h2>
 
           <div className="input">
