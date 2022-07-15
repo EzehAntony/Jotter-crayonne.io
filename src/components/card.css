@@ -84,8 +84,8 @@ a {
 @media (max-width: 801px) {
   .card {
     margin: 2%;
-    max-width: 160px;
-    max-height: 200px;
+    max-width: 110px;
+    max-height: 150px;
   }
 
   header {
