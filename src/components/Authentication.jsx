@@ -37,7 +37,26 @@ const Authentication = ({ text, action, path, to }) => {
           setUser(localStorage.getItem("user"));
           navigate("/");
         } else {
-          navigate("/login");
+          (async () => {
+            try {
+              await axios({
+                url: "https://crayonnejotter.herokuapp.com/api/auth/login",
+                method: "POST",
+                data: {
+                  username: username,
+                  password: password,
+                },
+                withCredentials: true,
+              }).then((res) => {
+                const value = JSON.stringify(res.data);
+                localStorage.setItem("user", value);
+                setUser(localStorage.getItem("user"));
+                navigate("/");
+              });
+            } catch (error) {
+              alert("unsuccessful login, Try again!");
+            }
+          })();
         }
       });
     } catch (err) {
@@ -66,9 +85,7 @@ const Authentication = ({ text, action, path, to }) => {
           <h1>
             Welcome to <span>Jotter</span>
           </h1>
-          <h2>
-            A simple notepad app  for making notes. 
-          </h2>
+          <h2>A simple notepad app for making notes.</h2>
 
           <div className="input">
             <div className="userLabel">
