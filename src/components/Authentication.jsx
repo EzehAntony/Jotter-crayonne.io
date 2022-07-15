@@ -77,10 +77,6 @@ const Authentication = ({ text, action, path, to }) => {
   return (
     <div className="login">
       <div className="left">
-        <p>
-          {text} have an account? <Link to={to}> {action} </Link>
-        </p>
-
         <form className="form" onSubmit={submit}>
           <h1>
             Welcome to <span>Jotter</span>
@@ -117,6 +113,9 @@ const Authentication = ({ text, action, path, to }) => {
           {success && <h3 className="error">Login successful</h3>}
           {error && <Error data={error} />}
         </form>
+        <p>
+          {text} have an account? <Link to={to}> {action} </Link>
+        </p>
       </div>
       <div className="right">
         <img className="noteImg" src="/note2.svg" alt="" />
