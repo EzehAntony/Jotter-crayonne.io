@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "./dashboard.css";
 
@@ -16,8 +17,6 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Header />
-
       <div className="dashboardMainContainer">
         <div className="dashboardMain">
           <p className="dashboardLogo">Jotter</p>
@@ -28,11 +27,10 @@ function Dashboard() {
             Admin: <span>{String(user.isAdmin)}</span>
           </h5>
 
-          <div onClick={logOut} className="logout">
-            <p>logout</p>
-          </div>
+          <img className="exit" src="/exit.svg" onClick={logOut} alt="" />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

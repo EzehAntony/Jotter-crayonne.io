@@ -1,6 +1,6 @@
 .dashboard {
   color: white;
-  background-color: black;
+  background-color: white;
   height: 100%;
   min-height: 100vh;
   text-align: left;
@@ -17,14 +17,14 @@
   background: #1a1a1a;
   width: 80%;
   max-width: 500px;
-  min-height: 400px;
+  min-height: 500px;
   padding: 20px 5%;
   position: relative;
-  margin: 10% 0 0 0 ;
+  margin: 10% 0 0 0;
 }
 
 .dashboardLogo {
-  color: #ff1493;
+  color: #c1ffe3;
   font-weight: 800;
   height: 50px;
   line-height: 50px;
@@ -40,18 +40,9 @@
   font-weight: 600;
 }
 
-.dashboard span {
-  text-transform: capitalize;
-  color: #ff1493;
-}
-
-.dashboard .logout {
+.exit {
   position: absolute;
-  bottom: 5%;
+  bottom: 0;
   right: 5%;
-  color: deeppink;
   cursor: pointer;
-  text-transform: lowercase;
-  font-weight: 800;
 }
-

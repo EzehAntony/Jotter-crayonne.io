@@ -3,10 +3,11 @@ import "./main.css";
 import Cards from "../components/Cards";
 import { UserContext } from "../UserContext";
 import useFetch from "../useFetch";
-import RoundedBtn from "../components/RoundedBtn";
+import RoundedBtn from "./Footer";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import ErrorPage from "../pages/ErrorPage";
+import Footer from "./Footer";
 function Main() {
   const { user, setUser } = useContext(UserContext);
   const url = `https://crayonnejotter.herokuapp.com/api/note/get/all/${
@@ -39,17 +40,7 @@ function Main() {
           placeholder={"Search"}
         />
       )}
-      {data && (
-        <div className="footer">
-          <Link to="/note">
-            <img src="/add.svg" className="imgAdd" alt="" />
-          </Link>
-
-          <Link to="/dashboard">
-            <img src="/profile.svg" alt="" />
-          </Link>
-        </div>
-      )}
+      {data && <Footer />}
       <div className="cardContainer">
         {data &&
           data
