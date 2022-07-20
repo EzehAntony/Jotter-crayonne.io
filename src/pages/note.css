@@ -17,6 +17,9 @@
   outline: none;
 }
 
+.noteContentTitle::placeholder {
+  color: black;
+}
 .noteContent {
   background-color: white;
   resize: none;
@@ -25,7 +28,7 @@
 .noteText {
   min-height: 500px;
   color: black;
-  background-color: #C1FFE3;
+  background-color: #c1ffe3;
   width: 90%;
   outline: none;
   padding: 5px;

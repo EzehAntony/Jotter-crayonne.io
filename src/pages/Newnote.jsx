@@ -9,8 +9,8 @@ import ErrorPage from "../pages/ErrorPage";
 function Newnote() {
   document.title = "New Note";
 
-  const [content, setContent] = useState(" ");
-  const [head, setHead] = useState(" ");
+  const [content, setContent] = useState("");
+  const [head, setHead] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -51,6 +51,7 @@ function Newnote() {
             placeholder="Note Title"
             className="noteContentTitle"
             type="text"
+            name="newNote"
             value={head}
             onChange={(e) => {
               setHead(e.target.value);
@@ -61,6 +62,7 @@ function Newnote() {
           <textarea
             placeholder="Note Content"
             className="noteText"
+            name="newNote"
             type="text"
             value={content}
             onChange={(e) => {
@@ -71,7 +73,12 @@ function Newnote() {
         {loading && <Loading />}
 
         <div className="notePageButtons">
-          <button type="submit" onClick={submit} className="notePageSave">
+          <button
+            type="submit"
+            name="newNote"
+            onClick={submit}
+            className="notePageSave"
+          >
             Save
           </button>
         </div>
