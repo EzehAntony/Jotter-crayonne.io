@@ -22,11 +22,13 @@ function Main() {
       {loading && <Loading />}
       {error && <ErrorPage />}
 
-      <div className="hello">
-        <h1>
-          Hey {localUser}, <br /> Good day!{" "}
-        </h1>
-      </div>
+      {data && (
+        <div className="hello">
+          <h1>
+            Hey {localUser}, <br /> Good day!{" "}
+          </h1>
+        </div>
+      )}
 
       {data && (
         <input
@@ -43,7 +45,9 @@ function Main() {
             <img src="/add.svg" className="imgAdd" alt="" />
           </Link>
 
-          <img src="/profile.svg" alt="" />
+          <Link to="/dashboard">
+            <img src="/profile.svg" alt="" />
+          </Link>
         </div>
       )}
       <div className="cardContainer">
