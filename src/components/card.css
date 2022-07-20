@@ -14,7 +14,7 @@
   margin: 10px;
   transition: 0.4s;
   cursor: pointer;
-  background: #4d4d4d;
+  background: #F3F5F7;
 }
 
 .card:hover {
@@ -22,13 +22,13 @@
 }
 
 .card:hover > header {
-  background-color: gray;
-  transition: .4s;
+  background-color: black;
+  color: white;
+  transition: 0.4s;
 }
 
 header {
-  color: white;
-  background-color: deeppink;
+  color: black;
   border-radius: 10px 10px 0 0;
   height: 20%;
   display: flex;
@@ -48,8 +48,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 }
-
 
 .cardEdit {
   width: 30px;
@@ -62,7 +62,6 @@ header {
 .cardEdit:hover {
   transform: scale(1.2);
 }
-
 
 .cardDelete {
   width: 30px;

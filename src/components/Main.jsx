@@ -15,11 +15,18 @@ function Main() {
   const method = "GET";
   const { data, loading, error } = useFetch(url, method);
   const [input, setInput] = useState("");
+  const localUser = JSON.parse(localStorage.getItem("user")).username;
 
   return (
     <div className="main">
       {loading && <Loading />}
       {error && <ErrorPage />}
+
+      <div className="hello">
+        <h1>
+          Hey {localUser}, <br /> Good day!{" "}
+        </h1>
+      </div>
 
       {data && (
         <input
@@ -31,9 +38,13 @@ function Main() {
         />
       )}
       {data && (
-        <Link to="/note">
-          <RoundedBtn />
-        </Link>
+        <div className="footer">
+          <Link to="/note">
+            <img src="/add.svg" className="imgAdd" alt="" />
+          </Link>
+
+          <img src="/profile.svg" alt="" />
+        </div>
       )}
       <div className="cardContainer">
         {data &&

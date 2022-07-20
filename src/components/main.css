@@ -5,28 +5,33 @@
 }
 
 .main {
-  background-color: black;
+  background-color: white;
   min-height: 100vh;
-  padding: 0 10%;
+  margin: 0 15%;
+}
+
+.home .hello {
+  font-size: 10px;
+  margin: 40px 0;
+  text-align: left;
+  font-weight: 400;
 }
 
 .main .searchBar {
   border: 0;
   height: 50px;
-  width: 80%;
-  max-width: 600px;
-  margin: 20px 0 0;
-  padding: 0 0 0 10px;outline: none;
+  width: 100%;
+  padding: 0 0 0 10px;
+  outline: none;
   font-weight: 600;
   color: deeppink;
-
+  background-color: #f5f6fc;
 }
 
 .loading {
   height: 50px;
   color: deeppink;
   background-color: black;
-  
 }
 
 .cardContainer {
@@ -40,8 +45,39 @@
   margin: 5px;
 }
 
+.footer {
+  width: 70%;
+  height: 80px;
+  background-color: #f5f6fc;
+  bottom: 0;
+  z-index: 1;
+  right: 0;
+  margin: 0 15% 0 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer img {
+  width: 60px;
+  margin: 20px;
+}
+
+.imgAdd {
+  background-color: #C1FFE3;
+  border-radius: 50%;
+}
+
+
 @media (max-width: 801px) {
   .main {
     padding: 0;
+    margin: 0 5%;
+  }
+  .footer {
+    width: 85%;
+    margin: 0 7.5%;
+    position: fixed;
   }
 }
