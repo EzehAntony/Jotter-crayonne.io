@@ -17,8 +17,8 @@ function Note() {
   const [dError, setDerror] = useState(null);
   const [uLoading, setUloading] = useState(null);
   const [uError, setUerror] = useState(null);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(" ");
+  const [content, setContent] = useState(" ");
   const navigate = useNavigate();
   /* ************************************** */
   const [data, setData] = useState("null");
@@ -93,7 +93,6 @@ function Note() {
 
   return (
     <div className="notePage">
-      <Header />
       {error && <ErrorPage />}
       {dError && <Error data={dError} />}
       {uError && <Error data={uError} />}
@@ -101,7 +100,6 @@ function Note() {
         <textarea
           className="noteContentTitle"
           placeholder="Title"
-          required
           type="text"
           value={title}
           onChange={(e) => {
@@ -126,7 +124,7 @@ function Note() {
           />
         }
 
-        <div className="notePageButtons">
+        <div className="footer">
           <button type="button" onClick={update} className="notePageSave">
             Save
           </button>

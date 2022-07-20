@@ -9,8 +9,8 @@ import ErrorPage from "../pages/ErrorPage";
 function Newnote() {
   document.title = "New Note";
 
-  const [content, setContent] = useState("");
-  const [head, setHead] = useState("");
+  const [content, setContent] = useState(" ");
+  const [head, setHead] = useState(" ");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -45,7 +45,6 @@ function Newnote() {
   return (
     <div className="notePage">
       {error && <ErrorPage />}
-      <Header />
       <div className="noteContent">
         {
           <textarea

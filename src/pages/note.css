@@ -1,52 +1,44 @@
 .noteContentTitle {
   color: deeppink;
-  text-align: center;
+  display: flex;
+  overflow: hidden;
+  text-align: left;
   font-weight: 800;
   align-items: center;
   padding: 20px 0 0 0;
-  font-size: 30px;
+  font-size: 20px;
   min-height: 50px;
   resize: none;
-  margin: 20px 0 0 0;
-  background-color: rgb(26, 26, 26);
-  width: 80%;
-  outline: none;
+  margin: 20px 0 0 5%;
+  background-color: white;
   border: 0;
+  border-bottom: 1px solid black;
+  width: 40%;
+  outline: none;
 }
 
 .noteContent {
-  background-color: black;
+  background-color: white;
   resize: none;
 }
 
 .noteText {
   min-height: 500px;
-  color: white;
-  background-color: rgb(26, 26, 26);
-  width: 80%;
-  padding: 20px 5%;
-  border: 0;
+  color: black;
+  background-color: #C1FFE3;
+  width: 90%;
   outline: none;
+  padding: 5px;
   border: 0;
   resize: none;
-}
-
-.notePageButtons {
-  background-color: black;
-  height: 50px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 20px 10%;
+  margin-top: 20px;
 }
 
 .notePageSave {
   width: 80px;
   height: 40px;
-  background: deeppink;
-  color: white;
+  background: #c1ffe3;
+  color: black;
   margin: 0 5px;
 }
 
