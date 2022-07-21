@@ -7,18 +7,22 @@ function Cards({ data }) {
 
   const trimTitle = data.title.split(" ")[0];
   const sliceTitle = data.title.slice(0, 10);
-  const sliceContent = data.content.slice(0, 70);
+  const sliceContent = data.content.slice(0, 40);
   const trimContent = data.content;
 
   return (
-    <div id={data._id} style={{ backgroundColor: color[random] }} className="card">
+    <div
+      id={data._id}
+      style={{ backgroundColor: color[random] }}
+      className="card"
+    >
       <header>
         {trimTitle?.length > 10 ? `${sliceTitle}...` : `${trimTitle}`}{" "}
       </header>
-      {trimContent.length > 70 ? (
-        <p className="content">{`${sliceContent}. . .`}</p>
+      {trimContent.length > 40 ? (
+        <div className="content">{`${sliceContent}. . .`}</div>
       ) : (
-        <p className="content">{sliceContent} </p>
+        <div className="content">{sliceContent} </div>
       )}
     </div>
   );
