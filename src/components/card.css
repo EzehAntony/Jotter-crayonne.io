@@ -46,6 +46,7 @@ header {
   border-radius: 0 0 20px 20px;
   word-wrap: break-word;
   color: black;
+  font-size: small;
 }
 
 .cardEdit {
