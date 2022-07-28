@@ -7,10 +7,21 @@ import Loading from "./Loading";
 
 import Error from "./Error";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const toastPopup = (data, type) => {
+  toast(`${data}`, {
+    type: type,
+    hideProgressBar: true,
+    theme: "colored",
+    autoClose: 2000,
+  });
+};
+
 const Authentication = ({ text, action, path, to }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { user, setUser } = useContext(UserContext);
@@ -30,12 +41,12 @@ const Authentication = ({ text, action, path, to }) => {
           password: password,
         },
       }).then((res) => {
-        setSuccess(true);
         if (action == "register") {
+          toastPopup("Success", "Success")
           const value = JSON.stringify(res.data);
           localStorage.setItem("user", value);
           setUser(localStorage.getItem("user"));
-          navigate("/");
+
         } else {
           (async () => {
             try {
@@ -48,28 +59,37 @@ const Authentication = ({ text, action, path, to }) => {
                 },
                 withCredentials: true,
               }).then((res) => {
+                toastPopup("Login Successfull", "success");
+                console.log("Yeah");
                 const value = JSON.stringify(res.data);
                 localStorage.setItem("user", value);
                 setUser(localStorage.getItem("user"));
                 navigate("/");
               });
             } catch (error) {
-              alert("unsuccessful login, Try again!");
+              toastPopup("unable to login, Try again", "error");
             }
           })();
         }
       });
     } catch (err) {
-      setSuccess(false);
       setLoading(false);
-      console.log(err);
       switch (err.response.status) {
         case 500:
-          return setError("Netowk error");
+          return toastPopup("Network Error");
+
         case 403:
-          return setError("Invalid username or password");
+          return toastPopup("Incorrect Username", "error");
+
+        case 401:
+          return toastPopup("Incorrect Password", "error");
+
         case 404:
-          return setError("Not found");
+          return toast.error("404 Not Found", {
+            hideProgressBar: true,
+            theme: "colored",
+            autoClose: 2000,
+          });
       }
     }
   };
@@ -90,7 +110,7 @@ const Authentication = ({ text, action, path, to }) => {
                 className="authInput"
                 type="text"
                 value={username}
-                required
+                required={true}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
@@ -99,7 +119,7 @@ const Authentication = ({ text, action, path, to }) => {
               <input
                 className="authInput"
                 type="text"
-                required
+                required={true}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -110,7 +130,7 @@ const Authentication = ({ text, action, path, to }) => {
             </button>
           </div>
           {loading && <Loading />}
-          {success && <h3 className="error">Login successful</h3>}
+
           {error && <Error data={error} />}
         </form>
         <p>
@@ -120,6 +140,7 @@ const Authentication = ({ text, action, path, to }) => {
       <div className="right">
         <img className="noteImg" src="/note2.svg" alt="" />
       </div>
+      <ToastContainer />
     </div>
   );
 };
