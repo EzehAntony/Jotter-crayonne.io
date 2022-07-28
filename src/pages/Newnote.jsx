@@ -5,6 +5,8 @@ import Loading from "../components/Loading";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Newnote() {
   document.title = "New Note";
