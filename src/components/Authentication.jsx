@@ -4,28 +4,30 @@ import axios from "axios";
 import "./authentication.css";
 import { UserContext } from "../UserContext";
 import Loading from "./Loading";
-
 import Error from "./Error";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const toastPopup = (data, type) => {
-  toast(`${data}`, {
-    type: type,
-    hideProgressBar: true,
-    theme: "colored",
-    autoClose: 2000,
-  });
-};
-
 const Authentication = ({ text, action, path, to }) => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { user, setUser } = useContext(UserContext);
-  const navigate = useNavigate();
+
+  const toastPopup = (data, type) => {
+    toast(`${data}`, {
+      onClose: () => {
+        console.log("Hello");
+      },
+      type: type,
+      hideProgressBar: true,
+      theme: "colored",
+      autoClose: 2000,
+      closeButton: false,
+    });
+  };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -42,11 +44,16 @@ const Authentication = ({ text, action, path, to }) => {
         },
       }).then((res) => {
         if (action == "register") {
-          toastPopup("Success", "Success")
           const value = JSON.stringify(res.data);
           localStorage.setItem("user", value);
           setUser(localStorage.getItem("user"));
-
+          toastPopup("Logged In", "success", {
+            hideProgressBar: true,
+            onClose: () => {
+              navigate("/");
+            },
+            autoClose: 2000,
+          });
         } else {
           (async () => {
             try {
@@ -59,12 +66,11 @@ const Authentication = ({ text, action, path, to }) => {
                 },
                 withCredentials: true,
               }).then((res) => {
-                toastPopup("Login Successfull", "success");
-                console.log("Yeah");
                 const value = JSON.stringify(res.data);
                 localStorage.setItem("user", value);
                 setUser(localStorage.getItem("user"));
-                navigate("/");
+                toastPopup("Registration Successfull", "success");
+                setLoading(false);
               });
             } catch (error) {
               toastPopup("unable to login, Try again", "error");
@@ -75,8 +81,8 @@ const Authentication = ({ text, action, path, to }) => {
     } catch (err) {
       setLoading(false);
       switch (err.response.status) {
-        case 500:
-          return toastPopup("Network Error");
+        default:
+          return toastPopup("Network Error", "error");
 
         case 403:
           return toastPopup("Incorrect Username", "error");

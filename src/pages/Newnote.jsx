@@ -5,8 +5,8 @@ import Loading from "../components/Loading";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Newnote() {
   document.title = "New Note";
@@ -35,12 +35,24 @@ function Newnote() {
       }).then((res) => {
         setError(false);
         setLoading(false);
-        navigate("/");
+        toast.success("Saved", {
+          theme: "colored",
+          autoClose: 500,
+          hideProgressBar: true,
+          closeButton: false,
+          onClose: () => {
+            navigate("/");
+          },
+        });
       });
     } catch (err) {
       setLoading(false);
-      setError(err);
-      console.log(err);
+      toast.error(`${err.message}`, {
+        theme: "colored",
+        autoClose: 1000,
+        closeButton: false,
+        hideProgressBar: true
+      });
     }
   };
 
@@ -85,6 +97,7 @@ function Newnote() {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

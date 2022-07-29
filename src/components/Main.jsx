@@ -4,11 +4,29 @@ import Cards from "../components/Cards";
 import { UserContext } from "../UserContext";
 import useFetch from "../useFetch";
 import RoundedBtn from "./Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import ErrorPage from "../pages/ErrorPage";
 import Footer from "./Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Main() {
+  var counter = 0;
+  const navigate = useNavigate();
+  const toastPop = () => {
+    toast.error("Network Error", {
+      autoClose: 2000,
+      hideProgressBar: true,
+      theme: "colored",
+      closeButton: false,
+      onClose: () => {
+        localStorage.clear();
+        window.location.reload();
+      },
+    });
+  };
+
   const { user, setUser } = useContext(UserContext);
   const url = `https://crayonnejotter.herokuapp.com/api/note/get/all/${
     JSON.parse(user)._id
@@ -21,12 +39,12 @@ function Main() {
   return (
     <div className="main">
       {loading && <Loading />}
-      {error && <ErrorPage />}
+      {error && toastPop()}
 
       {data && (
         <div className="hello">
           <h1>
-            Hey {localUser}, <br /> Good day!{" "}
+            Hey {localUser}, <br /> Good day!
           </h1>
         </div>
       )}
@@ -40,7 +58,6 @@ function Main() {
           placeholder={"Search"}
         />
       )}
-      {data && <Footer />}
       <div className="cardContainer">
         {data &&
           data
@@ -63,6 +80,9 @@ function Main() {
               </Link>
             ))}
       </div>
+
+      <Footer />
+      <ToastContainer />
     </div>
   );
 }

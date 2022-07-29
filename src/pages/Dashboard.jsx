@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "./dashboard.css";
+import { ToastContainer, toast, collapseToast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Dashboard() {
   document.title = "Dashboard";
@@ -11,8 +13,16 @@ function Dashboard() {
 
   const logOut = (e) => {
     localStorage.removeItem("user");
-    navigate("/");
-    window.location.reload();
+    toast.success("Logged out", {
+      closeButton: false,
+      hideProgressBar: true,
+      autoClose: 500,
+      theme: "colored",
+      onClose: () => {
+        navigate("/");
+        window.location.reload();
+      },
+    });
   };
 
   return (
@@ -31,6 +41,7 @@ function Dashboard() {
         </div>
       </div>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

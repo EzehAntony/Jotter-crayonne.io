@@ -6,6 +6,8 @@ import "./note.css";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import ErrorPage from "../pages/ErrorPage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Note() {
   document.title = "Note";
@@ -45,7 +47,15 @@ function Note() {
         setError(false);
       });
     } catch (error) {
-      setError(error);
+      toast.error(`${error}`, {
+        theme: "colored",
+        autoClose: 500,
+        hideProgressBar: true,
+        closeButton: false,
+        onClose: () => {
+          navigate("/");
+        },
+      });
       setLoading(false);
     }
   };
@@ -61,7 +71,13 @@ function Note() {
         withCredentials: true,
       }).then((res) => {
         setDerror(false);
-        navigate("/home");
+        toast.success("Deleted", {
+          theme: "colored",
+          autoClose: 500,
+          onClose: () => {
+            navigate("/");
+          },
+        });
       });
     } catch (error) {
       setDerror(error);
@@ -83,19 +99,25 @@ function Note() {
       }).then((res) => {
         setUloading(false);
         setUerror(false);
-        navigate("/home");
+        toast.success("Updated", {
+          theme: "colored",
+          autoClose: 500,
+          onClose: () => {
+            navigate("/");
+          },
+        });
       });
     } catch (error) {
-      setUerror(error);
+      toast.error(`${error}`, {
+        theme: "colored",
+        autoClose: 500,
+      });
       setUloading(false);
     }
   };
 
   return (
     <div className="notePage">
-      {error && <ErrorPage />}
-      {dError && <Error data={dError} />}
-      {uError && <Error data={uError} />}
       <div className="noteContent">
         <textarea
           className="noteContentTitle"
@@ -138,6 +160,7 @@ function Note() {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
