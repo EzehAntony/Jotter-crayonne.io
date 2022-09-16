@@ -40,13 +40,14 @@ header {
 }
 
 .content {
-  padding: 5%;
+  padding: 5% 10%;
   font-weight: 700;
   height: calc(100% - 20%);
   border-radius: 0 0 20px 20px;
   word-wrap: break-word;
   color: black;
   font-size: small;
+  text-align: left;
 }
 
 .cardEdit {
