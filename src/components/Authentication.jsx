@@ -7,7 +7,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { DominoSpinner } from "react-spinners-kit";
+import { ClapSpinner } from "react-spinners-kit";
 const Authentication = ({ text, action, path, to }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -15,6 +15,7 @@ const Authentication = ({ text, action, path, to }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { user, setUser } = useContext(UserContext);
+  
 
   const toastPopup = (data, type) => {
     toast(`${data}`, {
@@ -129,7 +130,11 @@ const Authentication = ({ text, action, path, to }) => {
             </div>
 
             <button onSubmit={submit} type="submit">
-              {loading ? <DominoSpinner  /> : "Submit"}
+              {loading ? (
+                <ClapSpinner size={15} frontColor="#00bcf5" />
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
 

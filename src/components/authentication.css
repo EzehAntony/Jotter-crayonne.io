@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5 ,h6, p, :hover {
+  user-select: none;
+} 
+
 body {
   font-family: "Work Sans", sans-serif;
   background-color: white;
@@ -153,6 +157,9 @@ button {
   font-weight: 700;
   outline: none;
   border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover {

@@ -45,24 +45,6 @@
   margin: 5px;
 }
 
-.footer {
-  width: 70%;
-  height: 50px;
-  background-color: #f5f6fc;
-  bottom: 0;
-  z-index: 1;
-  right: 0;
-  margin: 0 15% 0 0;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer img {
-  width: 40px;
-  margin: 20px;
-}
 
 .imgAdd {
   background-color: #c1ffe3;
@@ -74,9 +56,5 @@
     padding: 0;
     margin: 0 5%;
   }
-  .footer {
-    width: 100%;
-    margin: 0;
-    position: fixed;
-  }
+
 }

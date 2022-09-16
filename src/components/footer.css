@@ -1,0 +1,26 @@
+.contain {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  left: 0;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  background-color: #c4c4c4;
+  height: 60px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer img {
+  width: 40px;
+  margin: 20px;
+}
+
