@@ -7,7 +7,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { DominoSpinner } from "react-spinners-kit";
 const Authentication = ({ text, action, path, to }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -18,9 +18,6 @@ const Authentication = ({ text, action, path, to }) => {
 
   const toastPopup = (data, type) => {
     toast(`${data}`, {
-      onClose: () => {
-        console.log("Hello");
-      },
       type: type,
       hideProgressBar: true,
       theme: "colored",
@@ -132,10 +129,9 @@ const Authentication = ({ text, action, path, to }) => {
             </div>
 
             <button onSubmit={submit} type="submit">
-              submit
+              {loading ? <DominoSpinner  /> : "Submit"}
             </button>
           </div>
-          {loading && <Loading />}
 
           {error && <Error data={error} />}
         </form>
