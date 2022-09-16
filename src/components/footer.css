@@ -11,7 +11,7 @@
 }
 
 .footer {
-  background-color: #c4c4c4;
+  background-color: #f5f6fc;
   height: 60px;
   border-radius: 20px;
   display: flex;
@@ -23,4 +23,3 @@
   width: 40px;
   margin: 20px;
 }
-
